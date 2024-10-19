@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Лейбл с меняющимися картинками -->
+    <div class="image-slider">
+    </div>
+    <!-- Блок с кнопками -->
+    <div class="action-buttons">
+        <button onclick="window.location.href='/products'">Товары</button>
+        <button onclick="window.location.href='/categories'">Категории</button>
+        <button onclick="window.location.href='/deals'">Акции</button>
+        <button onclick="window.location.href='/search'">Поиск</button>
+        <button onclick="window.location.href='/contacts'">Контакты</button>
+    </div>
+    <div class="product-grid">
+        {% for product in products %}
+        <a href="/products/{{ product.id }}" class="product-item-link">
+            <div class="product-item">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                <div class="product-info">
+                    <h2>{{ product.name }}</h2>
+                    <!-- <p>{{ product.description }}</p> -->
+                    <p><strong>${{ product.price }}</strong></p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <script src="/static/slider.js"></script>
+</body>
+</html>
