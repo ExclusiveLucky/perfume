@@ -8,6 +8,8 @@ from models import Product
 
 app = FastAPI()
 
+# uvicorn main:app --reload
+
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/images", StaticFiles(directory="images"), name="images")
@@ -38,6 +40,7 @@ def show_products(request: Request, db: Session = Depends(get_db)):
 def show_products(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("deals.html", {"request": request})
 
+#123
 @app.get("/search")
 def show_products(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("search.html", {"request": request})
